@@ -9,7 +9,7 @@
 /src/components
 /.sass-cache
 
-#Ignore contents only (recursive):
+#Ignore contents only (recursive): #is this working as expected??
 /dist/**
 
 # Ignore file types
@@ -24,3 +24,4 @@
 # Ignore files by name:
 /lib.zip
 
+/src/assets/js/vendor/jquery1.11.2.min.js

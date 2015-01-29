@@ -16,12 +16,18 @@ module.exports = function (grunt) {
     },
     //grunt-contrib-jshint - http://www.jshint.com/docs/
     jshint: {
-      files: ['gruntfile.js', 'src/assets/js/**/*.js'],
+      files: [
+        'gruntfile.js', 
+        'src/assets/js/apps/**/*.js'
+        //'!src/assets/js/vendor/modernizr.js'
+      ],
       options: {
         globals: {
+          $: true,
           jQuery: true,
           console: true,
-          module: true
+          module: true,
+          document: true
         },
         quotmark: true,
         undef: true, //If variable is defined in another file, use the global directive to tell JSHint about it.
@@ -32,14 +38,23 @@ module.exports = function (grunt) {
     concat: {
       options: {
         // string output between each file being concatenated
-        separator: ';'
+        separator: ';\n'
       },
-      dist: {
+      vendors: {
         src: [
           './src/assets/js/vendor/jquery1.11.2.js',
           './src/assets/js/vendor/*.js'
         ],
-        dest: './dist/assets/js/scripts.js'
+        dest: './dist/assets/js/vendor-scripts.js'
+      },
+      apps: {
+        src: [
+          './src/assets/js/apps/setup.js',
+          './src/assets/js/apps/utils.js',
+          './src/assets/js/apps/**/*.js',
+          './src/assets/js/apps/init.js'
+        ],
+        dest: './dist/assets/js/apps-scripts.js'
       }
     },
     // grunt-contrib-uglify: minify js
@@ -49,9 +64,14 @@ module.exports = function (grunt) {
         banner: '/*! <%= pkg.name %> <%= pkg.version %> <%= grunt.template.today("dd-mm-yyyy") %> */\n',
         mangle: false
       },
-      dist: {
+      vendors: {
         files: {
-          './dist/assets/js/scripts.min.js': ['<%= concat.dist.dest %>']
+          './dist/assets/js/vendors.min.js': ['<%= concat.vendors.dest %>']
+        }
+      },
+      apps: {
+         files: {
+          './dist/assets/js/apps.min.js': ['<%= concat.apps.dest %>']
         }
       }
     },
@@ -128,10 +148,11 @@ module.exports = function (grunt) {
       },
       css: {
         files: '**/*.scss',
-        tasks: ['compass'] //currently not using this task name
+        tasks: ['compass'] 
       },
       js: {
-        files: ['<%= jshint.files %>']
+        files: ['<%= jshint.files %>'],
+        tasks: ['js'] 
       },
       options: {
         livereload: true
@@ -154,7 +175,8 @@ module.exports = function (grunt) {
 
   /* grunt tasks */
   // Start web server
-  grunt.registerTask('default', []);
+  grunt.registerTask('default', ['htmlhint', 'compass', 'cssmin', 'jshint', 'concat', 'uglify']);
+  grunt.registerTask('js', ['jshint', 'concat', 'uglify']);
   grunt.registerTask('server', ['newer:assemble', 'connect', 'watch']);
 
   /* An example of organising reg'd tasks!
