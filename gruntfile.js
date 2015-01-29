@@ -3,6 +3,50 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('./package.json'),
+    // bowercopy: copy only the neccessary files from /components/ folder 
+    bowercopy: {
+      options: {
+        // Task-specific options go here        
+        //clean: true // Bower components folder will be removed afterwards - not for now
+      },
+      scripts: {
+        // Target-specific file lists and/or options go here 
+        options: {
+          srcPrefix: './src/components/',
+          destPrefix: './src/assets/js/vendor/'
+        },
+        files: {
+          // Keys are destinations (prefixed with `options.destPrefix`) 
+          // Values are sources (prefixed with `options.srcPrefix`); One source per destination 
+          // e.g. 'bower_components/chai/lib/chai.js' will be copied to 'test/js/libs/chai.js' 
+          'jquery.js': 'jquery/index.js',
+          'modernizr.js': 'modernizr/modernizr.js'
+        }
+        
+      }
+    },
+    copy: {
+      fonts: {
+        files: [
+          {
+            expand: true, 
+            flatten: true, 
+            src: ['src/assets/sass/fonts/*'], 
+            dest: 'dist/assets/css/fonts/'
+          }
+        ]
+      },
+      images: {
+        files: [
+          { 
+            expand: true,
+            cwd: 'src/assets/images/', 
+            src: ['**/*.{png,jpg,svg}'], 
+            dest:'dist/assets/images/' 
+          }
+        ]
+      }
+    },
     // grunt-contrib-connect: run a local web server
     connect: {
       dev: {
@@ -43,9 +87,14 @@ module.exports = function (grunt) {
       vendors: {
         src: [
           './src/assets/js/vendor/jquery1.11.2.js',
-          './src/assets/js/vendor/*.js'
+          './src/assets/js/vendor/*.js',
+          '!./src/assets/js/vendor/modernizr.js'
         ],
         dest: './dist/assets/js/vendor-scripts.js'
+      },
+      headscripts: {
+         src: ['./src/assets/js/vendor/modernizr.js'],
+         dest: './dist/assets/js/modernizr.js'
       },
       apps: {
         src: [
@@ -67,6 +116,11 @@ module.exports = function (grunt) {
       vendors: {
         files: {
           './dist/assets/js/vendors.min.js': ['<%= concat.vendors.dest %>']
+        }
+      },
+      headscripts: {
+        files: {
+          './dist/assets/js/modernizr.min.js': ['<%= concat.headscripts.dest %>']
         }
       },
       apps: {
@@ -152,7 +206,7 @@ module.exports = function (grunt) {
       },
       js: {
         files: ['<%= jshint.files %>'],
-        tasks: ['js'] 
+        tasks: ['jshint'] 
       },
       options: {
         livereload: true
@@ -161,6 +215,8 @@ module.exports = function (grunt) {
   });
 
   /* load every plugin in package.json */
+  grunt.loadNpmTasks('grunt-bowercopy');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('assemble');
   grunt.loadNpmTasks('grunt-contrib-compass');
@@ -175,8 +231,8 @@ module.exports = function (grunt) {
 
   /* grunt tasks */
   // Start web server
-  grunt.registerTask('default', ['htmlhint', 'compass', 'cssmin', 'jshint', 'concat', 'uglify']);
-  grunt.registerTask('js', ['jshint', 'concat', 'uglify']);
+  grunt.registerTask('default', ['newer:bowercopy', 'copy', 'newer:htmlhint', 'newer:compass', 'newer:cssmin', 'newer:jshint', 'newer:concat', 'newer:uglify']);
+  grunt.registerTask('js', ['newer:jshint', 'newer:concat', 'newer:uglify']);
   grunt.registerTask('server', ['newer:assemble', 'connect', 'watch']);
 
   /* An example of organising reg'd tasks!

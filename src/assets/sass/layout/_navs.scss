@@ -8,7 +8,7 @@ nav	ul {
 	padding: 0;
 	margin: 0;
 	li {
-		@extend %headingthin;
+		@extend %heading;
 		list-style: none;
 		a {				
 				cursor: pointer;					

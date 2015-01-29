@@ -9,10 +9,9 @@
     
     <link href="http://fonts.googleapis.com/css?family=Droid+Sans|Droid+Serif" rel="stylesheet" type="text/css">
     <link href="/assets/css/main.css" rel="stylesheet" type="text/css">
+
+    {{header-scripts}}
     
-    <!--[if lt IE 9]>
-      
-    <![endif]-->
     <title>Assemblog: {{this.page.title}}</title>
   </head>
   <body>
@@ -22,7 +21,6 @@
     {{#markdown}}           {{! Block helper for embedding markdown content inside HTML}}
       {{> body}} 
     {{/markdown}}           {{! block helper - end /}}
-
 
     <ul>
 		  {{#withSort post 'data.posted'}}

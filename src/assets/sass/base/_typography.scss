@@ -2,53 +2,50 @@
 
 /* If serving on IIS, check MIME types - 
 SVG and WOFF may need adding to list of MIME types in IIS */
-//SANS-SERIF
+
+//OPEN SANS
 @font-face {
-    font-family: 'droid_sansregular';
-    src: url('fonts/DroidSans-webfont.eot');
-    src: url('fonts/DroidSans-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/DroidSans-webfont.woff') format('woff'),
-         url('fonts/DroidSans-webfont.ttf') format('truetype'),
-         url('fonts/DroidSans-webfont.svg#droid_sansregular') format('svg');
+    font-family: 'sansreg'; //open sans regular
+    src: url('fonts/OpenSans-Light-webfont.eot');
+    src: url('fonts/OpenSans-Light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/OpenSans-Light-webfont.woff') format('woff'),
+         url('fonts/OpenSans-Light-webfont.ttf') format('truetype'),
+         url('fonts/OpenSans-Light-webfont.svg#open_sanslight') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
 @font-face {
-    font-family: 'droid_sansbold';
-    src: url('fonts/DroidSans-Bold-webfont.eot');
-    src: url('fonts/DroidSans-Bold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/DroidSans-Bold-webfont.woff') format('woff'),
-         url('fonts/DroidSans-Bold-webfont.ttf') format('truetype'),
-         url('fonts/DroidSans-Bold-webfont.svg#droid_sansbold') format('svg');
+    font-family: 'sansregitalic'; //open sans regular italic
+    src: url('fonts/OpenSans-LightItalic-webfont.eot');
+    src: url('fonts/OpenSans-LightItalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/OpenSans-LightItalic-webfont.woff') format('woff'),
+         url('fonts/OpenSans-LightItalic-webfont.ttf') format('truetype'),
+         url('fonts/OpenSans-LightItalic-webfont.svg#open_sanslight_italic') format('svg');
     font-weight: normal;
     font-style: normal;
-
-}
-
-//SERIF
-@font-face {
-    font-family: 'droid_serifregular';
-    src: url('fonts/DroidSerif-webfont.eot');
-    src: url('fonts/DroidSerif-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/DroidSerif-webfont.woff') format('woff'),
-         url('fonts/DroidSerif-webfont.ttf') format('truetype'),
-         url('fonts/DroidSerif-webfont.svg#droid_serifregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
 }
 @font-face {
-    font-family: 'droid_serifbold';
-    src: url('fonts/DroidSerif-Bold-webfont.eot');
-    src: url('fonts/DroidSerif-Bold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/DroidSerif-Bold-webfont.woff') format('woff'),
-         url('fonts/DroidSerif-Bold-webfont.ttf') format('truetype'),
-         url('fonts/DroidSerif-Bold-webfont.svg#droid_serifbold') format('svg');
+    font-family: 'sansbold'; //open sans bold
+    src: url('fonts/OpenSans-Bold-webfont.eot');
+    src: url('fonts/OpenSans-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/OpenSans-Bold-webfont.woff') format('woff'),
+         url('fonts/OpenSans-Bold-webfont.ttf') format('truetype'),
+         url('fonts/OpenSans-Bold-webfont.svg#open_sansbold') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
+@font-face {
+    font-family: 'sansextrabold'; //open sans extra bold
+    src: url('fonts/OpenSans-ExtraBold-webfont.eot');
+    src: url('fonts/OpenSans-ExtraBold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/OpenSans-ExtraBold-webfont.woff') format('woff'),
+         url('fonts/OpenSans-ExtraBold-webfont.ttf') format('truetype'),
+         url('fonts/OpenSans-ExtraBold-webfont.svg#open_sansextrabold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 
 
 //text-sizes variables
@@ -63,19 +60,15 @@ $txt-l: 1.8em;
 // headings and texts
 
 %text {
-	font-family: 'droid_sansregular', serif;
+	font-family: 'sansreg', sans-serif;
 }
 %textbold {
-	font-family: 'droid_sansbold', serif;
+	font-family: 'sansbold', sans-serif;
     font-weight: normal;
 }
 %heading {
-	font-family: 'droid_serifbold', sans-serif;
+	font-family: 'sansextrabold', sans-serif;
     font-weight: normal;
-}
-%headingthin {
-	font-family: 'droid_serifregular', sans-serif;
-    font-weight: 400;
 }
 
 // default text styling
@@ -95,8 +88,8 @@ h2 {
 	margin: 1.5em 0 .5em;
 }
 h3 {
-	@extend %headingthin;
-	@include fontsize($hdg-mid, 1);
+	@extend %heading;
+	@include fontsize($hdg-sml, 1);
 	margin: 1.5em 0 .5em;
 }
 p, li, form {
