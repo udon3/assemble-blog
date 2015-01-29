@@ -147,7 +147,33 @@ Make sure all file extensions (.md, .hbs) are included in the watch and assemble
 [Assemble handlebars helpers](http://assemble.io/helpers/)
 
 
+## YAML frontmatter data in content files
+
+Each content file contains (/src/content/) some YAML frontmatter data.
+
+- All pages: 	
+
+	`title: "Page or blog title"`
+	`posted: 2015-01-29`
+
+- Blog pages only: 
+
+  `post:` : set to true, tells Assemble that this content is a blog post
+
+- Landing pages and homepage: 
+	
+	`landing:`	(bool) : set to true, this is a landing page and will be included in the first level navigation.
+
+	`order:` (number): Not yet used - intended for sorting a generated navlist.
+
+	`page:` (bool): set to true, it's a page as opposed to a blog post.
+
+- Homepage only: 
+
+	`homepage: true` (this is the homepage)
+	
 
 ## Next steps: 
 
 - set up scripts using the [module pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript)
+- create a mock style guide page

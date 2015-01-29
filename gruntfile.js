@@ -166,6 +166,7 @@ module.exports = function (grunt) {
       }
     },
     //assemble: site generator for grunt
+    //(N.B.targets don't work with withSort - https://github.com/assemble/assemble/issues/516)
     assemble: {
       options: {
         layout: 'page.hbs',
@@ -174,23 +175,33 @@ module.exports = function (grunt) {
         helpers: './src/templates/helpers/**/*.js'   //location of handlebars helper file
       },
       posts: {
-        files: [{
-          cwd: './src/content/',
-          dest: './dist/',
-          expand: true,
-          src: ['blog/**/*.md', '**/*.hbs', '!_pages/**/*.hbs']
-        }, {
-          cwd: './src/content/_pages/',
-          dest: './dist/',
-          expand: true,
-          src: '**/*.hbs'
-        }],
+        files: [
+          {
+            cwd: './src/content/',
+            dest: './dist/',
+            expand: true,
+            src: ['blog/**/*.md', '**/*.hbs', '!_pages/**/*.hbs']
+          }, 
+          {
+            cwd: './src/content/_pages/',
+            dest: './dist/',
+            expand: true,
+            src: '**/*.md'
+          }
+        ],
         options: {
-          collections: [{
-            name: 'post',
-            sortby: 'posted',
-            sortorder: 'descending'
-          }]
+          collections: [
+            {
+              name: 'post',
+              sortby: 'posted',
+              sortorder: 'descending'
+            },
+            {
+              name: 'landing',
+              sortby: 'order',
+              sortorder: 'ascending'
+            }
+          ]
         }
       }
     },

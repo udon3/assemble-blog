@@ -23,5 +23,4 @@
 
 # Ignore files by name:
 /lib.zip
-
-/src/assets/js/vendor/jquery1.11.2.min.js
+/_assemble-bug_gruntfile.js

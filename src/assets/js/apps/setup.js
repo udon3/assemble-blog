@@ -1,3 +1,3 @@
-//set up the SUKO443 window object
+//set up the project namespace
 
-console.log('hello from: setup.js');
+//console.log('hello from: setup.js');

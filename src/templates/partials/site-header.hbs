@@ -1,8 +1,15 @@
 
-    <div class="header">
-      <h1> hello {{this.page.title}}</h1>
+    <header>
+    	<p>header content (/templates/partials/site-header.hbs)</p>
+    	
+    	{{>nav-main}}
+
       
+      
+      <p>header content (/templates/partials/site-header.hbs)</p>
       {{#if homepage}}
-      <p>This is homepage no?</p>
+      <h1>H1 header for Homepage only</h1>
+      {{else}}
+      
       {{/if}}
-    </div>
+    </header>

@@ -1,0 +1,31 @@
+<nav>
+  <p>/templates/partials/nav-main.hbs</p>
+  <ul>
+    {{#withSort landing 'data.order'}}
+      {{#each this.pages }}
+      <li><a href="{{ replaceStr this.dest 'dist' '' }}">{{ this.data.title }}</a></li>
+      {{/each}}
+    {{/withSort}}
+  </ul>
+</nav>
+
+{{!-- 
+
+
+list all tags (posts only):
+
+<ul > 
+  {{#tags }} 
+  <li > <a  href ="/tag/{{tag }}.html" > {{tag }} </a > </li > 
+  {{/tags }} 
+</ul > 
+
+list all categories (posts only):
+
+<ul > 
+  {{#categories }} 
+  <li > <a  href ="/category/{{category }}.html" > {{category }} </a > </li > 
+  {{/categories }} 
+</ul >  
+
+--}}

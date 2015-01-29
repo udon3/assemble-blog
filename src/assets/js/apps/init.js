@@ -1,3 +1,3 @@
 $(document).ready(function(){
-	console.log('hello from: init.js');
+	//console.log('hello from: init.js');
 });
