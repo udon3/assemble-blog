@@ -1,0 +1,39 @@
+//------------------state------------------
+//for styling modules in a particular state
+
+/* 
+State rules are ways to describe how our modules or layouts will look when in a particular state. 
+hidden or expanded? active or inactive? 
+They are about describing how a module or layout looks on screens that are smaller or bigger. They are also about describing how a module might look in different views like the home page or the inside page.
+
+Naming convention prefix: is-  
+[e.g. is-hidden, is-collapsed - note: default state should be the most accessible, so won't have this class added!]
+ */
+
+
+//main header nav - burger nav for mobile
+/* uses show-hide-mixin($boolean)
+add class .is-hidden to #headwrap via JS for mobile screen */
+
+.is-hidden {
+	@include show-hide-mixin(false); //c.f _mixins
+}
+.is-visible {
+	@include show-hide-mixin(true); //c.f _mixins
+}
+
+.is-collapsed {
+	@include transition(all 0.3s ease-in-out);
+	height: 0px !important;	
+}
+	
+.is-sticky {
+	position: fixed!important;
+}
+.fixfixed {
+	.is-sticky {
+		position: absolute!important;
+	}
+}
+
+

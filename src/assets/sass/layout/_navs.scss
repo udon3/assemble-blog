@@ -1,0 +1,61 @@
+//-------------------navigation lists------------------------
+// generic nav styles
+
+// (main header nav, side nav, footer nav, breadcrumb nav, sitemap)
+
+nav	ul {
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	li {
+		@extend %headingthin;
+		list-style: none;
+		a {				
+				cursor: pointer;					
+				text-decoration: none;
+		}
+	}
+}
+
+//header nav 
+header nav {
+
+}
+
+
+//side nav 
+
+
+
+//footer nav 
+
+footer nav {
+	max-width: 940px;
+	width: 75%;
+	@include inline-block;
+	ul {
+		@extend %clearfix;
+		width: 100%;
+
+		li {
+			@include inline-block;
+			@include fontsize($txt-m, 1.4);		
+			float: left;
+			text-align: center;
+			width: 33%;
+			a {
+				color: $white;
+				display: block;
+				padding: 10px 0;
+			}
+		}
+	}
+}
+
+
+// breadcrumb nav
+
+
+
+
+//sitemap nav

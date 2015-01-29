@@ -1,0 +1,57 @@
+//----------------Form styling-------------------------
+
+form {
+	width: 100%;
+
+	@include bp(phablet, true){
+		width: 80%;
+	}
+}
+
+label {
+	display: inline-block;
+	width: 30%;
+	padding-right: 5%;
+	@include bp(phablet, true){
+		float: left;
+		text-align: right;
+
+	}
+}
+
+input, textarea {
+	display: block;
+	margin: 0 0 1.4em;
+	width: 100%;
+
+	@include bp(phablet, true){
+		width: 70%;
+
+		&:not([type=submit]) {
+
+		}
+		//for old IE (lacking support for :not())
+		@include old-ie { 														      
+		  
+		}
+	}
+	
+	
+}
+
+textarea {
+	height: 10em;
+}
+input[type=submit]{
+	width: 8em;
+	float: right;
+}
+
+//validation error styling:
+.invalid {
+	color: $error;
+	display: block;
+	@include bp(phablet, true){
+		margin-left: 30%;
+	}
+}

@@ -1,0 +1,31 @@
+//--------------------main--------------------------
+//the bit between header and footer
+
+
+main {
+  background-color: $white;
+  color: $color-dk;
+  overflow-x: hidden;
+  position: relative;
+  z-index: 1;
+}
+.content {
+  margin: 5em 0;
+  //padding: 0 2em;
+}
+
+.content a {
+  &:hover, &:focus {
+    color: $color-hilite;
+  }
+  
+}
+
+
+aside {
+  //default for mobile
+  @include bp(tablet, true) {
+    //special for wider
+  }
+}
+

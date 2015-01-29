@@ -1,0 +1,73 @@
+/*-----------------------------------
+---------media queries mixins--------
+-------------------------------------*/
+
+
+
+// media queries with SASS compile work-around method for old IE (http://jakearchibald.github.io/sass-ie/)
+
+//boolean variable whether or not mediaqueries needs fixing 
+$fix-mqs: false !default; 		//switched off for all browsers (set to true in all-old-ie.scss)
+
+@mixin bp($width, $do-for-ie: false) {
+
+	//$do-for-ie set this argument to 'true' in instances where the same styles need applying in old IE
+	/* e.g.
+		@include bp(phablet, true){
+  		width: auto;
+  	}
+ */
+
+  //fix media queries for old IE
+  //if $fix-mqs has a value (set to 'laptop' in all-old-ie.scss)
+	@if $fix-mqs {		
+		//if $do-for-ie is true, set $fix-mqs value to whatever the $width value is:
+		@if $do-for-ie == true {
+			$fix-mqs: $width;
+			@content;
+		}
+		//and if 'laptop' matches @include bp(laptop)
+		/* @if $fix-mqs == $width { // (for desktop old IE only)
+			@content;																						//writes block css within bp(laptop){...}
+		} */
+	}
+	@else {		
+	  $_bp-mobile: 20em;
+	  $_bp-phablet: 37.5em;
+	  $_bp-tablet: 50em;
+	  $_bp-laptop: 64em;
+	  $_bp-desktop: 70em;
+
+		@if $width == small {
+	    @media screen and (max-width: $_bp-mobile) {@content ;}
+	  }
+	  @else if $width == mobile {
+	    @media screen and (min-width: $_bp-mobile) {@content ;}
+	  }
+	  @else if $width == phablet {
+	    @media screen and (min-width: $_bp-phablet) {@content ;}
+	  }
+	  @else if $width == tablet {
+	    @media screen and (min-width: $_bp-tablet) {@content ;}
+	  }
+	  @else if $width == laptop {
+	    @media screen and (min-width: $_bp-laptop) {@content ;}
+	  }
+	  @else if $width == desktop {
+	    @media screen and (min-width: $_bp-desktop) {@content ;}
+	  }
+
+		@media screen and (min-width: $width) {
+			@content;
+		}
+	}
+}
+
+
+$old-ie: false !default;
+
+@mixin old-ie {
+	@if $old-ie {
+		@content;
+	}
+}

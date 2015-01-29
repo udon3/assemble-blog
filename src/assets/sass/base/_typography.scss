@@ -1,0 +1,110 @@
+//--------------typography-----------------
+
+/* If serving on IIS, check MIME types - 
+SVG and WOFF may need adding to list of MIME types in IIS */
+//SANS-SERIF
+@font-face {
+    font-family: 'droid_sansregular';
+    src: url('fonts/DroidSans-webfont.eot');
+    src: url('fonts/DroidSans-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/DroidSans-webfont.woff') format('woff'),
+         url('fonts/DroidSans-webfont.ttf') format('truetype'),
+         url('fonts/DroidSans-webfont.svg#droid_sansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'droid_sansbold';
+    src: url('fonts/DroidSans-Bold-webfont.eot');
+    src: url('fonts/DroidSans-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/DroidSans-Bold-webfont.woff') format('woff'),
+         url('fonts/DroidSans-Bold-webfont.ttf') format('truetype'),
+         url('fonts/DroidSans-Bold-webfont.svg#droid_sansbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+//SERIF
+@font-face {
+    font-family: 'droid_serifregular';
+    src: url('fonts/DroidSerif-webfont.eot');
+    src: url('fonts/DroidSerif-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/DroidSerif-webfont.woff') format('woff'),
+         url('fonts/DroidSerif-webfont.ttf') format('truetype'),
+         url('fonts/DroidSerif-webfont.svg#droid_serifregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'droid_serifbold';
+    src: url('fonts/DroidSerif-Bold-webfont.eot');
+    src: url('fonts/DroidSerif-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/DroidSerif-Bold-webfont.woff') format('woff'),
+         url('fonts/DroidSerif-Bold-webfont.ttf') format('truetype'),
+         url('fonts/DroidSerif-Bold-webfont.svg#droid_serifbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+//text-sizes variables
+
+$hdg-lrg: 4.4em;
+$hdg-mid: 2.4em;
+$hdg-sml: 2em;
+$txt-s: 1em;
+$txt-m:  1.6em;
+$txt-l: 1.8em;
+
+// headings and texts
+
+%text {
+	font-family: 'droid_sansregular', serif;
+}
+%textbold {
+	font-family: 'droid_sansbold', serif;
+    font-weight: normal;
+}
+%heading {
+	font-family: 'droid_serifbold', sans-serif;
+    font-weight: normal;
+}
+%headingthin {
+	font-family: 'droid_serifregular', sans-serif;
+    font-weight: 400;
+}
+
+// default text styling
+
+h1 {
+	@extend %heading;
+	@include fontsize($hdg-lrg, 1);
+
+    span {
+        font-size: 60%;
+        display: block;
+    }
+}
+h2 {
+	@extend %heading;
+	@include fontsize($hdg-mid, 1);
+	margin: 1.5em 0 .5em;
+}
+h3 {
+	@extend %headingthin;
+	@include fontsize($hdg-mid, 1);
+	margin: 1.5em 0 .5em;
+}
+p, li, form {
+	@extend %text;
+	@include fontsize($txt-m, 1.4);
+}
+li p, li li {
+    font-size: 1em;
+}
+
+

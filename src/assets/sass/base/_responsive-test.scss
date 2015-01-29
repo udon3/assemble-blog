@@ -1,0 +1,34 @@
+//----------------responsive test--------------
+#bptest {position: absolute; z-index: 10000; top:0; left:0; height:20px; width: 100%; @include opacity(0.70);	}
+
+//mobile-first:
+
+#bptest  {
+	font-size: 2em;
+	color: $black;
+	background:red;	
+		&:before {content:'default - MAX 37.5em - mobile'};				//  320/16  default style 
+	@include bp(phablet){
+		background:orange;	
+		&:before {content:'min 37.5em - phablet'}; 		// 600/16
+	}	
+	@include bp(tablet){
+		background:yellow;	
+		&:before {content:'min 50em - tablet'}; 			// 800/16
+	}	
+	@include bp(laptop, true){		//this is the default for old IE
+		background:green;	
+		&:before {content:'min 64em - laptop'};				// 1024/16		
+	}	
+	//EXTRA styles for old IE (c.f. _utils.css.scss and all-old-ie.scss) - only appears in all-old-ie.css
+	@include old-ie { 														      
+    font-style: italic;
+    &:before {content:'old IE - defaults to laptop design'};
+  }
+	@include bp(desktop){ 
+		background:aqua;	
+		&:before {content:'min 70em - desktop'}; 			// 1120/16
+	}	
+}
+
+

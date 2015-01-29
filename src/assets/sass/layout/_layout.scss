@@ -1,0 +1,14 @@
+//-------------------layout------------------------
+//generic layout styles
+
+/* Layout rules divide the page into sections. 
+Layouts hold one or more modules together. 
+
+Naming convention prefix: l- or grid-
+*/
+
+//main centered area
+main, header, footer {
+	font-size: 100%;
+	width: 100%;
+}

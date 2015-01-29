@@ -1,0 +1,47 @@
+/*-----------------------------------
+-----------------mixins--------------
+-------------------------------------*/
+
+//mixins for common usage
+@mixin fontsize ($size, $line-height){
+  font-size: $size;
+  line-height: $line-height;
+}
+//e.g. @include fontsize($hdg-lrg, 1);
+
+
+//extend-only placeholders
+
+%clearfix {
+  zoom:1;
+  &:before, &:after {
+    content: "\0020"; 
+    display: block; 
+    height: 0; 
+    overflow: hidden; 
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+
+// show-hide mixin
+$visible: true !default;
+
+@mixin show-hide-mixin($visible) {
+  @if $visible {
+    position: relative;
+    overflow: visible; 
+  }    
+  @else {
+    position: absolute; 
+    overflow: hidden; 
+    height: 1px; width: 1px; 
+    margin: -1px; 
+    left: -9999em;
+
+  }
+   
+}  
+

@@ -1,0 +1,32 @@
+@charset "utf-8";
+
+// Use Compass
+@import "compass";
+
+//import all partials here
+
+
+@import 'utils/_variables';
+@import 'utils/_mixins';
+@import 'utils/_mediaqueries'; 
+
+@import 'base/_normalize';
+@import 'base/_typography';
+@import 'base/_forms';
+
+@import 'layout/_layout';
+@import 'layout/_navs';
+@import 'layout/_header';
+@import 'layout/_body';
+@import 'layout/_footer';
+/* 
+@import 'module/module';
+@import 'module/search';
+
+@import 'state/state';
+
+@import 'theme/theme';
+
+//HIDE ON DEPLOYMENT: visual marker for screen-sizes
+@import 'base/responsive-test';
+*/
