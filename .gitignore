@@ -20,6 +20,7 @@
 
 # Ignore notes
 /notes_*
+/NOTES_*
 
 # Ignore files by name:
 /lib.zip

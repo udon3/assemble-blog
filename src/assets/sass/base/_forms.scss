@@ -49,7 +49,7 @@ input[type=submit]{
 
 //validation error styling:
 .invalid {
-	color: $error;
+	color: $red;
 	display: block;
 	@include bp(phablet, true){
 		margin-left: 30%;

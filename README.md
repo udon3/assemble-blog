@@ -28,7 +28,7 @@ Local install:
 - grunt (obvious)
 - bower
 - bowercopy
-- grunt-contrib-copy (need this to automate copying over font files and images to /dist/)
+- grunt-contrib-copy (using this to automate copying over font files and images to `/dist/`)
 
 site generation:
 

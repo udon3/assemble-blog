@@ -21,14 +21,14 @@ $fix-mqs: false !default; 		//switched off for all browsers (set to true in all-
   //fix media queries for old IE
   //if $fix-mqs has a value (set to 'laptop' in all-old-ie.scss)
 	@if $fix-mqs {		
-		//if $do-for-ie is true, set $fix-mqs value to whatever the $width value is:
+		//Suko addition: if $do-for-ie is true, set $fix-mqs value to whatever the $width value is:
 		@if $do-for-ie == true {
 			$fix-mqs: $width;
 			@content;
 		}
 		//and if 'laptop' matches @include bp(laptop)
 		/* @if $fix-mqs == $width { // (for desktop old IE only)
-			@content;																						//writes block css within bp(laptop){...}
+			@content;									//writes block css within bp(laptop){...}
 		} */
 	}
 	@else {		

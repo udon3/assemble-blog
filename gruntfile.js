@@ -79,6 +79,7 @@ module.exports = function (grunt) {
       }
     },
     //grunt-contrib-concat: concatenate all js files into one
+    // Now thinking of using require.js...
     concat: {
       options: {
         // string output between each file being concatenated
@@ -246,20 +247,6 @@ module.exports = function (grunt) {
   grunt.registerTask('js', ['newer:jshint', 'newer:concat', 'newer:uglify']);
   grunt.registerTask('server', ['newer:assemble', 'connect', 'watch']);
 
-  /* An example of organising reg'd tasks!
-
-  grunt.registerTask('html', ['assemble', 'htmlmin']);
-
-  grunt.registerTask('js', ['jshint', 'concat', 'uglify']);
-
-  grunt.registerTask('style', ['sass', 'autoprefixer', 'cssmin']);
-
-  grunt.registerTask('serve', [ 'default', 'connect', 'watch']);
-
-  grunt.registerTask('pub', ['default','gh-pages']);
-
-  grunt.registerTask('default', ['js', 'style', 'clean', 'html']);
-
-  */
+  
 
 };

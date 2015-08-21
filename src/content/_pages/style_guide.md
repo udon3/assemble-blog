@@ -8,6 +8,8 @@ page: true
 
 ## This is a mock style guide
 
+Page content in markdown with html for additional layout/styling (e.g. to add classes)
+
 ## This is a H2 heading
 
 Lorem ipsum dolor sit amet, **bold text** adipiscing elit. *italic text* ligula eget dolor. Aenean massa.
@@ -43,13 +45,20 @@ Ordered list:
 
 ## Images
 
-Inline-style: 
+2 ways to add images with markdown.
+
+Markdown inline-style: 
 <div class="image1">
-	![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+	![alt text](/assets/images/cake.jpg "Logo Title Text 1")
 </div>
 
-Reference-style: 
+Markdown reference-style (this may be more legible if there are many images on the page): 
 <div class="image1">
 	![alt text][logo]
 </div>
-[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 2"
+[logo]: /assets/images/cake.jpg "Logo Title Text 2"
+
+Adding an image with link (quite convoluted):
+<div class="image1">
+[![alt text](/assets/images/cake.jpg)](#linkurl)
+<div class="image1">

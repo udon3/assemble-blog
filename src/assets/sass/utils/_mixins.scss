@@ -2,6 +2,14 @@
 -----------------mixins--------------
 -------------------------------------*/
 
+//Rem font size with px fallback for IE 8 and older
+//assume base font-size set to 62.5% (so that default font-size is 10px, not 16px)
+@mixin rem-font-size($size-value: 1.6) {
+  font-size: ($size-value * 10) + px;
+  font-size: $size-value + rem;
+} 
+
+
 //mixins for common usage
 @mixin fontsize ($size, $line-height){
   font-size: $size;
@@ -25,23 +33,43 @@
   }
 }
 
+//Shortcuts mixins
 
-// show-hide mixin
-$visible: true !default;
+// centre stuff horizontally
+@mixin centre($width){
+  left: 50%;
+  transform: translateX(-50%); //avoids paint and layout
+  width: $width;
 
-@mixin show-hide-mixin($visible) {
-  @if $visible {
-    position: relative;
-    overflow: visible; 
-  }    
-  @else {
-    position: absolute; 
-    overflow: hidden; 
-    height: 1px; width: 1px; 
-    margin: -1px; 
-    left: -9999em;
-
+  // lte ie9 (using modernizr)
+  .no-csstransforms & {
+    left: auto;
+    margin-left: auto;
+    margin-right: auto;
+    width: $width;
   }
-   
-}  
+}
+
+// image replacement
+//(using the Scott Kellum method)
+@mixin hide-text($width, $height, $imgurl) {
+  width: $width;
+  height: $height;
+  background: url($imgurl) no-repeat 0 0;
+  background-size: cover;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+// Usage:
+.hide-text-from-browser {
+  @include hide-text(100px, 100px, '../images/clubs.svg');
+  display: inline-block;  
+
+  //lte ie8 (using modernizr)
+  .no-svg & {
+    background: url('../images/recycle.png') no-repeat 0 0;
+  }
+}
+
 

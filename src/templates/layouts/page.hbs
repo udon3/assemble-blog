@@ -17,31 +17,35 @@
   </head>
   <body>
     {{>site-header}}            {{! partials expression with >  (if there's nothing in the partial, throws an error)}}
-    <div class="page-content">
+    <main>
+      <div class="centre">
 
+        {{#unless homepage}}
+        <h1>{{this.page.title}}</h1>
+        <p>H1 header for all except homepage</p>
+        {{/unless}}
+
+        <h2>{{ this.page.title }}</h2> {{! expression with path to FrontMatter's 'title' value?? (in Markdown file only)}}
+        {{#markdown}}           {{! Block helper for embedding markdown content inside HTML}}
+          {{> body}} 
+        {{/markdown}}           {{! block helper - end /}}
+
+
+
+        <ul>
+          {{#withSort post 'data.posted'}}
+            {{#each this.pages }}
+            <li><a href="{{ replaceStr this.dest 'dist' '' }}">{{ this.data.title }}</a></li>
+            {{/each}}
+          {{/withSort}}
+        </ul>
+
+        <p>{{link 'link in handlebars' 'http://boo.hoo.com' }}</p>
+        
+      </div>
      
-      {{#unless homepage}}
-      <h1>{{this.page.title}}</h1>
-      <p>H1 header for all except homepage</p>
-      {{/unless}}
-
-      <h2>{{ this.page.title }}</h2> {{! expression with path to FrontMatter's 'title' value?? (in Markdown file only)}}
-      {{#markdown}}           {{! Block helper for embedding markdown content inside HTML}}
-        {{> body}} 
-      {{/markdown}}           {{! block helper - end /}}
-
-
-
-      <ul>
-  		  {{#withSort post 'data.posted'}}
-  		    {{#each this.pages }}
-  		    <li><a href="{{ replaceStr this.dest 'dist' '' }}">{{ this.data.title }}</a></li>
-  		    {{/each}}
-  		  {{/withSort}}
-  		</ul>
-
-      <p>{{link 'link in handlebars' 'http://boo.hoo.com' }}</p>
-    </div>
+      
+    </main>
     {{>site-footer}}
 
 
