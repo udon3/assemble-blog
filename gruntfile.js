@@ -173,7 +173,8 @@ module.exports = function (grunt) {
         layout: 'page.hbs',
         layoutdir: './src/templates/layouts/',  
         partials: './src/templates/partials/**/*.hbs',
-        helpers: './src/templates/helpers/**/*.js'   //location of handlebars helper file
+        helpers: './src/templates/helpers/**/*.js',   //location of handlebars helper file
+        data: './src/data/*.{json,yml}'
       },
       posts: {
         files: [
@@ -215,6 +216,9 @@ module.exports = function (grunt) {
       css: {
         files: '**/*.scss',
         tasks: ['compass'] 
+      },
+      data: {
+        files: ['./src/data/*.json']
       },
       js: {
         files: ['<%= jshint.files %>'],
